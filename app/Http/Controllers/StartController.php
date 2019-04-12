@@ -13,6 +13,14 @@ class StartController extends Controller
         return view('create-user');
     }
     function saveUser(Request $data){
+        $data->validate([
+            'name' => 'required',
+            // 'email' => 'email',
+            'degree' => 'required',
+            'age' => 'required',
+            'occupation' => 'required',
+        ]);
+        
         Subject::create($data->all());
         $subject_id = Subject::orderBy('created_at', 'desc')->first()->id;
         return view('start', compact('subject_id'));

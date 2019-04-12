@@ -24,6 +24,12 @@ class SurveyController extends Controller
         
 
     }
+    function survey(){
+        return view('questions');
+    }
+    function submitAnswer(Request $request){
+        return "oi foi";
+    }
     function array_10($array){
         foreach($array as &$val){
             $val = $val + 10;
