@@ -28,15 +28,19 @@
             <div class="panel-body">
 
                 <div class="text-center">
+                    <h3 id="exemplo"></h3>
                     <img id="code" src="https://raw.githubusercontent.com/abhisheksoni27/code-snipper/master/examples/index.js.png" /><br/>
                     <form id="form" method="POST">
                         {{ csrf_field() }}
                     <div class="row">
                         <div class="col-md-12">
-                            <textarea name="answer" rows="4" cols="50">
-                            </textarea>
-                            <input id="time" type="text" name="time" />
-                            <input value="0" id="has_changed_page" type="text" name="has_changed_page" />
+                            <textarea name="subject_answer" rows="4" cols="50"></textarea>
+
+                            <input id="subject_time" type="hidden" name="subject_time" />
+                            <input id="order" type="hidden" name="order" />
+                            <input id="question_id" type="hidden" name="question_id" />
+                            <input id="subject_id" type="hidden" name="subject_id" value="{{$info->subject_id}}" />
+                            <input value="0" id="has_changed_page" type="hidden" name="has_changed_page" />
                         </div>
                         <div class="col-md-12">
                             <button class="btn btn-success">Send</button>
@@ -53,13 +57,22 @@
         </div>
     </div>
 </body>
-<script>
+<?php $jsonQuestions = json_encode($info->questions)?>
+<script type='text/javascript'>
     
     $(document).ready(function(){
+        
+        var questions = {{$jsonQuestions}}
+        
+        var index = 0;
+        $("#exemplo").html(questions[index]);
         var start = new Date();
+        
         $("#form").submit(function(e) {
             var end = new Date();
-            $("#time").val((end-start)/1000);
+            $("#subject_time").val((end-start)/1000);
+            $("#order").val(index);
+            $("#question_id").val(questions[index]);
             e.preventDefault(); // avoid to execute the actual submit of the form.
             var form = $(this);
             var url = form.attr('action');
@@ -69,6 +82,8 @@
                 data: form.serialize(), // serializes the form's elements.
                 success: function(data)
                 {
+                    index = index+1;
+                    $("#exemplo").html(questions[index]);
                     start = new Date();
                 }
                 });
