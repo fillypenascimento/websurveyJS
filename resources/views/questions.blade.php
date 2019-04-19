@@ -23,35 +23,47 @@
 <body>
 
     <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">  
+                <div class="panel panel-default" style="margin-top: 30px">
 
-        <div class="panel panel-default" style="margin-top: 30px">
-            <div class="panel-body">
+                    <div class="panel-body">
 
-                <div class="text-center">
-                    <h3 id="exemplo"></h3>
-                    <img id="code" src="https://raw.githubusercontent.com/abhisheksoni27/code-snipper/master/examples/index.js.png" /><br/>
-                    <form id="form" method="POST">
-                        {{ csrf_field() }}
-                    <div class="row">
-                        <div class="col-md-12">
-                            <textarea name="subject_answer" rows="4" cols="50"></textarea>
+                        <div class="text-center">
+                            <h3><span id="current">1</span>/10</h3>
+                            <div class="code-wrapper">
 
-                            <input id="subject_time" type="hidden" name="subject_time" />
-                            <input id="order" type="hidden" name="order" />
-                            <input id="question_id" type="hidden" name="question_id" />
-                            <input id="subject_id" type="hidden" name="subject_id" value="{{$info->subject_id}}" />
-                            <input value="0" id="has_changed_page" type="hidden" name="has_changed_page" />
+                                <img id="code" src="" />
+                            </div><br/>
+                            <form id="form" method="POST">
+                                {{ csrf_field() }}
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="subject_answer">Expected output: </label>
+                                            <input type="text" name="subject_answer" />
+                                        </div>
+
+                                        <input id="subject_time" type="hidden" name="subject_time" />
+                                        <input id="order" type="hidden" name="order" />
+                                        <input id="question_id" type="hidden" name="question_id" />
+                                        <input id="subject_id" type="hidden" name="subject_id" value="{{$info->subject_id}}" />
+                                        <input value="0" id="has_changed_page" type="hidden" name="has_changed_page" />
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button class="btn btn-success">Send</button>
+                                        <button type="button" id="idk" class="btn btn-info">I have no idea</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div class="col-md-12">
-                            <button class="btn btn-success">Send</button>
-                            <button class="btn btn-info">I have no idea</button>
-                        </div>
+
+
                     </div>
-                </form>
+
                 </div>
-
-
             </div>
+
 
 
         </div>
@@ -59,17 +71,20 @@
 </body>
 <?php $jsonQuestions = json_encode($info->questions)?>
 <script type='text/javascript'>
-    
     $(document).ready(function(){
         
         var questions = {{$jsonQuestions}}
         
         var index = 0;
-        $("#exemplo").html(questions[index]);
+        $("#code").attr("src", `/images/${questions[index]}.png`);
         var start = new Date();
-        
+        $("#idk").click(function(){
+            $("#subject_answer").val();
+            $("#form").submit();
+        });
         $("#form").submit(function(e) {
             var end = new Date();
+            
             $("#subject_time").val((end-start)/1000);
             $("#order").val(index);
             $("#question_id").val(questions[index]);
@@ -83,7 +98,12 @@
                 success: function(data)
                 {
                     index = index+1;
-                    $("#exemplo").html(questions[index]);
+                    if(index>9)
+                        window.location.replace("/thanks");
+                    $("#subject_answer").val();
+                    $("#current").html(index+1);
+                    $("#has_changed_page").val(0);
+                    $("#code").attr("src", `/images/${questions[index]}.png`);
                     start = new Date();
                 }
                 });

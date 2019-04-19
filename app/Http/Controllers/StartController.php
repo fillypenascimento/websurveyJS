@@ -14,14 +14,18 @@ class StartController extends Controller
     }
     function saveUser(Request $data){
         $data->validate([
-            'name' => 'required',
-            // 'email' => 'email',
+            'email' => 'email',
             'degree' => 'required',
             'age' => 'required',
-            'occupation' => 'required',
         ]);
-        
-        Subject::create($data->all());
+        $data['ip'] = $data->ip();
+        try{
+
+            Subject::create($data->all());
+        }
+        catch(\Illuminate\Database\QueryException $e){
+            return view('rejected');
+        }
         $subject_id = Subject::orderBy('created_at', 'desc')->first()->id;
         return view('start', compact('subject_id'));
 

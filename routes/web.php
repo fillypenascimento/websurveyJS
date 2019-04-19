@@ -18,7 +18,9 @@ Route::get('/', function () {
 Route::get('/', 'StartController@createUser');
 
 Route::get('/subjects', 'StartController@subjects');
+Route::get('/results', 'ResultsController@index');
 Route::get('/survey', 'SurveyController@survey');
+Route::get('/thanks', 'SurveyController@thanks');
 Route::post('/saveUser', 'StartController@saveUser');
 
 

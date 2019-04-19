@@ -9,10 +9,10 @@ class Subject extends Model
     //
 
     protected $fillable = [
-        'name', 'occupation', 'degree', 'age', 'experience', 'subject_id', 'question_id'
+        'ip', 'name', 'occupation', 'degree', 'age', 'experience', 'subject_id', 'question_id'
     ];
 
     public function questions(){
-        return $this->belongsToMany('App\Question', 'subject_question')->withPivot('subject_time','subject_answer', 'order', 'is_correct');
+        return $this->belongsToMany('App\Question', 'subject_question')->withPivot('subject_time','has_changed_page', 'subject_answer', 'order', 'is_correct');
     }
 }

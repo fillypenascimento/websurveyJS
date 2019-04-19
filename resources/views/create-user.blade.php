@@ -12,9 +12,10 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
-        
-    <link href="{{URL::asset('css/custom.css')}}" rel="stylesheet">
 
+    <link href="{{URL::asset('css/custom.css')}}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+        crossorigin="anonymous"></script>
     <!-- Styles -->
 
 </head>
@@ -27,52 +28,79 @@
             <div class="panel-body">
 
                 <form method="POST" action="/saveUser">
-                    {{ csrf_field() }}  
-                    
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" name="name" class="form-control" />
-                    </div>
+                    {{ csrf_field() }}
                     <div class="form-group">
                         <label for="email">Email address</label>
                         <input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
                     </div>
                     <div class="form-group">
-                        <label>Occupation</label>
-                        <input type="text" name="occupation" class="form-control" />
+                        <label for="experience">Experience in coding </label>
+                        <select name="experience" class="form-control">
+                            <option value="">Choose an experience</option>
+                            <option value="1">Less than a year</option>
+                            <option value="2">1 - 2 years</option>
+                            <option value="3">2 - 3 years</option>
+                            <option value="4">Over 3 years</option>
+                        </select>
                     </div>
 
                     <div class="form-group">
-                        <label>Experience</label>
-                        <input type="text" name="experience" class="form-control" />
-                    </div>
-
-                    <div class="form-group">
-                        <label>Degree</label>
-                        <input type="text" name="degree" class="form-control" />
+                        <label for="degree">Degree </label>
+                        <select name="degree" class="form-control">
+                                <option value="">Select a degree</option>
+                                <option value="1">Student</option>
+                                <option value="2">UnderGrad</option>
+                                <option value="3">Masters</option>
+                                <option value="4">PhD</option>
+                            </select>
                     </div>
 
                     <div class="form-group">
                         <label>Age</label>
                         <input type="number" name="age" class="form-control" />
                     </div>
-
-                    <button class="btn btn-success">Enviar</button>
+                    <div class="alert alert-danger">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <div class="form-check">
+                                    <input id="agree" type="checkbox" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-11">
+                                By checking this box you agree to have your answers reviewed and used to the purpose of the research. You won't be identified,
+                                and your email will only be used to raffle an $20 amazon gift.
+                            </div>
+                        </div>
+                    </div>
+                    <button disabled id="confirm" class="btn btn-success">Confirm</button>
                 </form>
                 @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
+                        <li>{{ $error }}</li>
                         @endforeach
                     </ul>
                 </div>
-            @endif
+                @endif
             </div>
 
 
         </div>
     </div>
 </body>
+<script>
+    $(document).ready(function(){
+    $("#agree").click(function(){
+        if($(this).is(":checked")){
+            $("#confirm").attr("disabled", false);
+        }
+        else{
+            $("#confirm").attr("disabled", true);
+        }
+    })
+});
+
+</script>
 
 </html>

@@ -25,9 +25,13 @@ class SurveyController extends Controller
         $info = new \stdClass();
         $info->questions = $questions;
         $info->subject_id = $subject_id;
+        $latinSquare->save();
         return view('questions', compact('info'));
         
 
+    }
+    function thanks(){
+        return view('thanks');
     }
     function survey(){
         return view('questions');
@@ -35,18 +39,18 @@ class SurveyController extends Controller
     function submitAnswer(Request $request){
         try{
             $data = $request->all();
-            
             $data['is_correct'] = 0;
-            $data['question_id'] = 1;
             unset($data['_token']);
             $subject = Subject::find($request->subject_id);
-            
             $subject->questions()->attach($data['subject_id'], $data);
+            return "success";
         }
         catch(Exception $e){
-            dd("deu problema");
+            abort(500);
         }
-        return "oi foi";
+        catch(\Illuminate\Database\QueryException $e){
+            abort(500);
+        }
     }
     function array_10($array){
         foreach($array as &$val){
@@ -56,7 +60,7 @@ class SurveyController extends Controller
         return $array;
     }
     private function create_square(){
-        $array = [0,1,2,3,4,5,6,7,8,9];
+        $array = [1,2,3,4,5,6,7,8,9,10];
         $isAtom = rand(0,1) == 1;
         $fourthSubSquare = $firstSubSquare = array_rand(array_flip($array),5);
         $thirdSubSquare = $secondSubSquare = array_values(array_diff($array,$firstSubSquare));
