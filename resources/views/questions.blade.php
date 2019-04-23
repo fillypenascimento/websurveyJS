@@ -31,7 +31,7 @@
 
                         <div class="text-center">
                             <h3><span id="current">1</span>/10</h3>
-                            <div class="code-wrapper">
+                            <div class="">
 
                                 <img id="code" src="" />
                             </div><br/>

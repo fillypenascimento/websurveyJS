@@ -36,7 +36,8 @@
                             <th>Is Atom</th>
                             <th>Time</th>
                             <th>Has Changed Page</th>
-                            <th>Answer</th>
+                            <th>Subject Answer</th>
+                            <th>Expected Answer</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,6 +48,7 @@
                             <td>{{$question->pivot->subject_time}}</td>
                             <td>{{$question->pivot->has_changed_page ? 'Yes' : 'No'}}</td>
                             <td>{{$question->pivot->subject_answer}}</td>
+                            <td>{{$question->answer}} ({{$question->answer == $question->pivot->subject_answer ? 'Correct' : 'Wrong'}})</td>
                         </tr>
                         @endforeach
 

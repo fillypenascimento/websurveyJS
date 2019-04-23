@@ -34,25 +34,26 @@
                         <input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
                     </div>
                     <div class="form-group">
-                        <label for="experience">Experience in coding </label>
+                        <label for="experience">Experience level</label>
                         <select name="experience" class="form-control">
-                            <option value="">Choose an experience</option>
+                            <option value="">Choose experience level</option>
                             <option value="1">Less than a year</option>
-                            <option value="2">1 - 2 years</option>
-                            <option value="3">2 - 3 years</option>
-                            <option value="4">Over 3 years</option>
+                            <option value="2">Between 1 and 4 years</option>
+                            <option value="3">Between 4 and 10 years</option>
+                            <option value="4">Over than 10 years</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="degree">Degree </label>
+                        <label for="degree">Education level</label>
                         <select name="degree" class="form-control">
-                                <option value="">Select a degree</option>
-                                <option value="1">Student</option>
-                                <option value="2">UnderGrad</option>
-                                <option value="3">Masters</option>
-                                <option value="4">PhD</option>
-                            </select>
+                            <option value="">Select education level</option>
+                            <option value="1">High school degree or equivalent</option>
+                            <option value="2">Some university course but no degree</option>
+                            <option value="3">Bachelor degree</option>
+                            <option value="4">Master degree</option>
+                            <option value="5">PhD</option>
+                        </select>
                     </div>
 
                     <div class="form-group">
