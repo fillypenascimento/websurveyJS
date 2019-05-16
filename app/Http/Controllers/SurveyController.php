@@ -20,7 +20,7 @@ class SurveyController extends Controller
         }
         elseif($latinSquare->second_row_subject_id == null){
             $questions = array_merge(json_decode($latinSquare->third_square),json_decode($latinSquare->fourth_square));
-            $latinSquare->first_row_subject_id = $subject_id;
+            $latinSquare->second_row_subject_id = $subject_id;
         }
         $info = new \stdClass();
         $info->questions = $questions;

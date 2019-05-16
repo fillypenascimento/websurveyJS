@@ -30,7 +30,7 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th colspan="5">Subject {{$subject->id}}</tr>
+                        <th colspan="5">Subject {{$subject->id}} - {{$subject->experience}} - {{$subject->degree}}</tr>
                         <tr>
                             <th>Question</th>
                             <th>Is Atom</th>
