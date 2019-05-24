@@ -13,6 +13,12 @@ class SurveyController extends Controller
         $subject_id = $data['subject_id'];
         $latinSquare = LatinSquare::orderBy('created_at', 'desc')->first();
         // consertar quadrado caso este esteja errado, ou seja , menos que 10 questoes
+        if(!$latinSquare->check_first_subject()){
+            $latinSquare->first_row_subject_id = null;
+        }
+        if(!$latinSquare->check_second_subject()){
+            $latinSquare->second_row_subject_id = null;
+        }
         if(!$latinSquare || ($latinSquare->first_row_subject_id && $latinSquare->second_row_subject_id))
             $latinSquare = $this->create_square();
         if($latinSquare->first_row_subject_id == null){

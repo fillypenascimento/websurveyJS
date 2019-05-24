@@ -93,7 +93,7 @@
         });
         $("#form").submit(function(e) {
             var end = new Date();
-            
+            $("#send-button").attr("disabled", true);
             $("#subject_time").val((end-start)/1000);
             $("#order").val(index);
             $("#question_id").val(questions[index]);
