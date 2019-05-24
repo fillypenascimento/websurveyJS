@@ -6,19 +6,30 @@ use Illuminate\Http\Request;
 
 use App\Subject;
 
+
+
 class StartController extends Controller
 {
     
-    function createUser(){
-        return view('create-user');
+    function createUser(Request $data){
+        $ref = base64_decode($data->ref);
+        if($ref != 'reddit' && $ref != 'unb-ed' && $ref != 'node' && $ref != 'workplace')
+            return view('error');
+        return view('create-user', compact('ref'));
     }
     function saveUser(Request $data){
         $data->validate([
             'email' => 'email',
             'degree' => 'required',
-            'age' => 'required',
+            'age' => 'required'
+            
         ]);
         $data['ip'] = $data->ip();
+        if($data['ref'] == 'reddit' || $data['ref'] == 'community'){
+            $subjects = Subject::where('ip', $data['ip']);
+            if($subjects->count())
+                return view('rejected');
+        }
         try{
 
             Subject::create($data->all());

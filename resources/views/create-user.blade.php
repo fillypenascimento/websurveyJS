@@ -71,6 +71,7 @@
                 </div>
                 <form method="POST" action="/saveUser">
                     {{ csrf_field() }}
+                    <input type="hidden" name="ref" id="ref" value="{{$ref}}"/>
                     <div class="form-group">
                         <label for="email">Email address</label>
                         <input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">

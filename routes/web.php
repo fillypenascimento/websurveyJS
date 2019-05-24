@@ -12,10 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('error');
 });
 
-Route::get('/', 'StartController@createUser');
+Route::get('/ref={ref}', 'StartController@createUser');
 
 Route::get('/subjects', 'StartController@subjects');
 Route::get('/results', 'ResultsController@index');

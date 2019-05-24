@@ -9,7 +9,7 @@ class Subject extends Model
     //
 
     protected $fillable = [
-        'ip', 'name', 'occupation', 'degree', 'age', 'experience', 'subject_id', 'question_id'
+        'ip', 'name', 'occupation', 'degree', 'age', 'experience', 'subject_id', 'question_id', 'ref'
     ];
 
     public function questions(){
