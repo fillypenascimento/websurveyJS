@@ -24,7 +24,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-3 col-md-6">  
+            <div class="col-md-offset-2 col-md-8">  
                 <div class="panel panel-default" style="margin-top: 30px">
 
                     <div class="panel-body">
@@ -41,7 +41,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="subject_answer">Expected output: </label>
-                                            <input type="text" name="subject_answer" />
+                                            <input id="subject_answer" type="text" name="subject_answer" />
                                         </div>
 
                                         <input id="subject_time" type="hidden" name="subject_time" />
@@ -51,8 +51,8 @@
                                         <input value="0" id="has_changed_page" type="hidden" name="has_changed_page" />
                                     </div>
                                     <div class="col-md-12">
-                                        <button class="btn btn-success">Send</button>
-                                        <button type="button" id="idk" class="btn btn-info">I have no idea</button>
+                                        <button id="send-button" class="btn btn-success">Send</button>
+                                        <button type="button" id="idk" class="btn btn-info">I do not know</button>
                                     </div>
                                 </div>
                             </form>
@@ -72,14 +72,23 @@
 <?php $jsonQuestions = json_encode($info->questions)?>
 <script type='text/javascript'>
     $(document).ready(function(){
-        
+        $("#send-button").attr("disabled", true);
+
+        $("#subject_answer").keyup(function(){
+            if($("#subject_answer").val() == "" || $("#subject_answer").val() == null ){
+                $("#send-button").attr("disabled", true);
+            }
+            else{
+                $("#send-button").attr("disabled", false);
+            }
+        });
         var questions = {{$jsonQuestions}}
         
         var index = 0;
         $("#code").attr("src", `/images/${questions[index]}.png`);
         var start = new Date();
         $("#idk").click(function(){
-            $("#subject_answer").val();
+            $("#subject_answer").val("");
             $("#form").submit();
         });
         $("#form").submit(function(e) {
@@ -100,7 +109,7 @@
                     index = index+1;
                     if(index>9)
                         window.location.replace("/thanks");
-                    $("#subject_answer").val();
+                    $("#subject_answer").val("");
                     $("#current").html(index+1);
                     $("#has_changed_page").val(0);
                     $("#code").attr("src", `/images/${questions[index]}.png`);

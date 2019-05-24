@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>JS Survey</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -29,16 +29,8 @@
                     <div class="panel panel-body">
                         <h4>Instructions</h4>
                         <div class="alert alert-info">
-                            <p>In this survey, you will be asked to predict the output of snippets of JavaScript code. The etntire survey is intended to
-                            last no more than 8 minutes. For each question, you will be asked to fill in the text box with
-                            the output the program would yield if it were run.
-                            </p>
-                            <p>Please try your best to focus for the next
-                            minutes. </p>
-                            <p>We suggest that you take the survey in a quiet room, and avoid any interruptions during
-                            the questionaire. Since there will be no grading for the answers, feel free to mark 'I do not
-                            know' if this is the case. Answer the questions using your own reasoning, and nothing else. Thank
-                            you!</p>
+                            
+                            To start the survey, press start.
                         </div>
                         <form method="POST" action="/survey">
                             {{ csrf_field() }}
