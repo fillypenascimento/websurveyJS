@@ -12,6 +12,7 @@ class SurveyController extends Controller
     function begin(Request $data){
         $subject_id = $data['subject_id'];
         $latinSquare = LatinSquare::orderBy('created_at', 'desc')->first();
+        // consertar quadrado caso este esteja errado, ou seja , menos que 10 questoes
         if(!$latinSquare || ($latinSquare->first_row_subject_id && $latinSquare->second_row_subject_id))
             $latinSquare = $this->create_square();
         if($latinSquare->first_row_subject_id == null){

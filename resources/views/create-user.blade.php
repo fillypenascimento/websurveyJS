@@ -26,7 +26,14 @@
 
         <div class="panel panel-default" style="margin-top: 30px">
             <div class="panel-body">
+                <div class="alert alert-info text-center">
+                    <b>Survey on detection of atoms of confusion in JavaScript</b><br/>
+                    The purpose of the survey is determine if some JS constructs make the code more difficult to read.
+                    To measure that,
+                    we ask you to answer a few questions about the output of 10 snippets in JavaScript.
 
+
+                </div>
                 <form method="POST" action="/saveUser">
                     {{ csrf_field() }}
                     <div class="form-group">
@@ -34,7 +41,7 @@
                         <input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
                     </div>
                     <div class="form-group">
-                        <label for="experience">Experience level</label>
+                        <label for="experience">Experience level<small> (development/programming - regardless of languages or frameworks)</small></label>
                         <select name="experience" class="form-control">
                             <option value="">Choose experience level</option>
                             <option value="1">Less than a year</option>
