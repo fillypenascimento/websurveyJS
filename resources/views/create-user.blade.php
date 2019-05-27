@@ -57,6 +57,46 @@
             </div>
         </div>
     </div>
+    <div id="modal-term" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Terms of Agreement</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>STATEMENT OF INFORMED CONSENT</p>
+                    <p>By answering this survey, you permit the researcher to obtain, use and disclose the anonymous
+                    information provided as described below.</p>
+
+                    <p>CONDITIONS AND STIPULATIONS</p>
+                    <p>
+                    1. I understand that all information is confidential. I will not be personally identified. I agree to
+                    complete the survey for research purposes and that the data derived from this anonymous survey may
+                    be published in journals, conferences and blog posts.
+                    </p>
+                    <p>
+                    2. I understand that my participation in this research survey is totally voluntary and that declining to participate will involve no penalty or loss of benefits. If I choose, I may withdraw my
+                    participation at any time. I also understand that if I choose to participate, I may decline to
+                    answer any question that I am not comfortable answering.
+                    </p>
+                    <p>
+                    3. I understand that I can contact the researcher if I have any questions about the research
+                    survey. I am aware that my consent will not directly benefit me. I am also aware that the author
+                    will maintain the data collected in perpetuity and may utilize data for future academic work.
+                    </p>
+                <p>
+                    4. By checking the box on this page I freely provide consent and acknowledge my rights as a voluntary research participant as outlined above and provide consent to the researcher to use my information in conducting research on the areas noted above.
+                </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <div class="container">
@@ -113,8 +153,8 @@
                             </div>
                             <div class="col-md-11">
                                 By checking this box you agree to have your answers reviewed and used to the purpose of
-                                the research. You won't be identified,
-                                and your email will only be used to raffle an $20 amazon gift.
+                                the research and also with the <a href="#" id="term-text"> Terms of Agreement </a>. You won't be identified,
+                                and your email will only be used to raffle amazon store books.
                             </div>
                         </div>
                     </div>
@@ -139,6 +179,9 @@
     $(document).ready(function(){
         
         $("#modal-info").modal('show');
+        $("#term-text").click(function(){
+            $("#modal-term").modal('show');
+        })
             
         $("#agree").click(function(){
             if($(this).is(":checked")){
