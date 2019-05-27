@@ -13,7 +13,7 @@ class StartController extends Controller
     
     function createUser(Request $data){
         $ref = base64_decode($data->ref);
-        if($ref != 'reddit' && $ref != 'unb-ed' && $ref != 'node' && $ref != 'workplace')
+        if($ref != 'testing' && $ref != 'reddit' && $ref != 'unb-ed' && $ref != 'node' && $ref != 'workplace')
             return view('error');
         return view('create-user', compact('ref'));
     }
