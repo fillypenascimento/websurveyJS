@@ -33,7 +33,9 @@
                                     <h2>Oops!</h2>
                                     <p>
                                         Something isn't right.
-                                        Please use the link provided to you when you were invited to the survey
+                                        Please use the link provided to you when you were invited to the survey.
+
+                                        The survey could also have ended to your community. Thank you.
                                     </p>
                                 </div>
                                 
