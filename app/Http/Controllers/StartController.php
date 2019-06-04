@@ -19,7 +19,6 @@ class StartController extends Controller
     }
     function saveUser(Request $data){
         $data->validate([
-            'email' => 'email',
             'degree' => 'required',
             'age' => 'required'
             
