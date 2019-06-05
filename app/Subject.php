@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Question;
+use App\LatinSquare;
 class Subject extends Model
 {
     //
@@ -14,6 +15,17 @@ class Subject extends Model
 
     public function questions(){
         return $this->belongsToMany('App\Question', 'subject_question')->withPivot('subject_time','has_changed_page', 'subject_answer', 'order', 'is_correct');
+    }
+    public function square(){
+        $first = $this->belongsTo('App\LatinSquare', 'id', 'first_row_subject_id');
+        
+        $second = $this->belongsTo('App\LatinSquare', 'id', 'second_row_subject_id');
+        if($first->exists())
+            return $first;
+        if($second->exists())
+            return $second;
+        
+        return null;
     }
     public function getExperienceAttribute(){
         switch($this->attributes['experience']){

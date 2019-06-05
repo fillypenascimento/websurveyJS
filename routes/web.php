@@ -19,6 +19,7 @@ Route::get('/ref={ref}', 'StartController@createUser');
 
 Route::get('/subjects', 'StartController@subjects');
 Route::get('/results', 'ResultsController@index');
+Route::get('/resultsCsv', 'ResultsController@createCsv');
 Route::get('/survey', 'SurveyController@survey');
 Route::get('/thanks', 'SurveyController@thanks');
 Route::post('/saveUser', 'StartController@saveUser');
