@@ -15,7 +15,8 @@ class ResultsController extends Controller
         $subjects = Subject::with('questions')->get();
         $fp = fopen('results.csv', 'w');
         $linhas = [[]];
-        $counter = 0;
+        $linhas[0] = ["SQUARE ID", "SUBJECT ID", "QUESTION ID", "IS ATOM", "TIME", "CORRECT"];
+        $counter = 1;
         foreach ($subjects as $subject) {
             foreach($subject->questions as $question){
                 if($subject->square()){ // checking if user at least started to answer
