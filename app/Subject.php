@@ -16,6 +16,7 @@ class Subject extends Model
     public function questions(){
         return $this->belongsToMany('App\Question', 'subject_question')->withPivot('subject_time','has_changed_page', 'subject_answer', 'order', 'is_correct');
     }
+    
     public function square(){
         $first = $this->belongsTo('App\LatinSquare', 'id', 'first_row_subject_id');
         
@@ -27,7 +28,7 @@ class Subject extends Model
         
         return null;
     }
-    public function getExperienceAttribute(){
+    public function getExperienceFormattedAttribute(){
         switch($this->attributes['experience']){
             case 1:
                 return 'Less than a year';
