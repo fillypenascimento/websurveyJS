@@ -28,7 +28,7 @@ class ResultsController extends Controller
                     $correct = strtolower($question->answer) == strtolower($question->pivot->subject_answer) ? "CORRECT" : "WRONG";
                     $linhas[$counter][5] = $correct;
                     $linhas[$counter][6] = $subject->experience;
-                    $linhas[$counter][7] = $subject->occupation;
+                    $linhas[$counter][7] = $subject->degree;
                     $counter = $counter + 1;
                 }
             }
