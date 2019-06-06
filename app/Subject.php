@@ -43,7 +43,8 @@ class Subject extends Model
 
         }
     }
-    public function getDegreeAttribute(){
+    
+    public function getDegreeFormatedAttribute(){
         switch($this->attributes['degree']){
             case 1:
                 return 'High school degree or equivalent';
