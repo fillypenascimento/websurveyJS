@@ -15,7 +15,7 @@ class ResultsController extends Controller
         $subjects = Subject::with('questions')->get();
         $fp = fopen('results.csv', 'w');
         $linhas = [[]];
-        $linhas[0] = ["SQUARE ID", "SUBJECT ID", "QUESTION ID", "IS ATOM", "TIME", "CORRECT", "Experience", "Education Level"];
+        $linhas[0] = ["SQUARE ID", "SUBJECT ID", "QUESTION ID", "IS ATOM", "TIME", "CORRECT", "Experience", "Education Level", "REF"];
         $counter = 1;
         foreach ($subjects as $subject) {
             foreach($subject->questions as $question){
@@ -29,6 +29,7 @@ class ResultsController extends Controller
                     $linhas[$counter][5] = $correct;
                     $linhas[$counter][6] = $subject->experience;
                     $linhas[$counter][7] = $subject->degree;
+                    $linhas[$counter][8] = $subject->ref;
                     $counter = $counter + 1;
                 }
             }
