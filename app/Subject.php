@@ -28,6 +28,16 @@ class Subject extends Model
         
         return null;
     }
+    public function getSquareIdAttribute(){
+        $first = $this->belongsTo('App\LatinSquare', 'id', 'first_row_subject_id');
+        $second = $this->belongsTo('App\LatinSquare', 'id', 'second_row_subject_id');
+        if($first->exists())
+            return 1;
+        if($second->exists())
+            return 2;
+        
+        return null;
+    }
     public function getExperienceFormattedAttribute(){
         switch($this->attributes['experience']){
             case 1:
