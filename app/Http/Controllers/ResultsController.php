@@ -31,7 +31,7 @@ class ResultsController extends Controller
                     $linhas[$counter][7] = $subject->degree;
                     $linhas[$counter][8] = $subject->questions->count() == 10 ? "YES" : "NO";
                     $linhas[$counter][9] = $subject->ref;
-                    $linhas[$counter][10] = $question->subject_answer ? 'NO' : 'YES';
+                    $linhas[$counter][10] = $question->pivot->subject_answer == '' ? 'NO' : 'YES';
                     $linhas[$counter][11] = $subject->square_id;
                     $counter = $counter + 1;
                 }
