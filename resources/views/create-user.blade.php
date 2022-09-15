@@ -154,7 +154,7 @@
                             <div class="col-md-11">
                                 By checking this box you agree to have your answers reviewed and used to the purpose of
                                 the research and also with the <a href="#" id="term-text"> Terms of Agreement </a>. You won't be identified,
-                                and your email will only be used to raffle amazon store books.
+                                and your email will not be used for any other purpose than the ones regarding this survey.
                             </div>
                         </div>
                     </div>

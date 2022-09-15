@@ -34,9 +34,9 @@
                                     <p>
                                         Your answers have been submited to our studies.
                                     </p>
-                                    <p>
+                                    <!-- <p>
                                         We will contact you via e-mail in case you have been awarded the amazon gift card.
-                                    </p>
+                                    </p> -->
                                     <p>
                                         You can now close this website
                                     </p>
