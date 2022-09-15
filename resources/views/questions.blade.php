@@ -30,7 +30,7 @@
                     <div class="panel-body">
 
                         <div class="text-center">
-                            <h3><span id="current">1</span>/10</h3>
+                            <h3><span id="current">1</span>/12</h3>
                             <div class="">
 
                                 <img id="code" src="" />
@@ -107,7 +107,7 @@
                 success: function(data)
                 {
                     index = index+1;
-                    if(index>9)
+                    if(index>11)
                         window.location.replace("/thanks");
                     $("#subject_answer").val("");
                     $("#current").html(index+1);

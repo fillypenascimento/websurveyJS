@@ -19,13 +19,13 @@ class LatinSquare extends Model
     }
     public function check_first_subject(){
         if($this->first_subject()->exists()){
-            return $this->first_subject->questions->count() == 10;
+            return $this->first_subject->questions->count() == 12;
         }
         return false;
     }
     public function check_second_subject(){
         if($this->second_subject()->exists()){
-            return $this->second_subject->questions->count() == 10;
+            return $this->second_subject->questions->count() == 12;
         }
         return false;
     }

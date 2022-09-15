@@ -13,8 +13,12 @@ class StartController extends Controller
     
     function createUser(Request $data){
         $ref = base64_decode($data->ref);
-        if($ref != 'unb' &&  $ref != 'testing' && $ref != 'unb-ed' && $ref != 'node' && $ref != 'workplace')
+        if($ref != 'unb' &&  $ref != 'testing' && $ref != 'unb-ed' && $ref != 'node' && $ref != 'workplace' && $ref != 'reddit' && $ref != 'community'){
+            error_log($ref);
+            error_log($data->ref);
+            error_log('controller');
             return view('error');
+        }
         return view('create-user', compact('ref'));
     }
     function saveUser(Request $data){
@@ -30,10 +34,11 @@ class StartController extends Controller
                 return view('rejected');
         }
         try{
-
             Subject::create($data->all());
+            error_log('subject_create');
         }
         catch(\Illuminate\Database\QueryException $e){
+            error_log('subject_rejected');
             return view('rejected');
         }
         $subject_id = Subject::orderBy('created_at', 'desc')->first()->id;

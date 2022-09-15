@@ -40,7 +40,7 @@
                 </div>
                 <div class="modal-body">
                     <p>In this survey, you will be asked to predict the output of JavaScript code snippets.
-                        The entire survey has only 10 questions, all of them with fewer than 15 lines.
+                        The entire survey has only 12 questions, all of them with fewer than 15 lines.
                         For each question, you will be asked to fill in the text box with
                         the output the program would yield if it were run.
                     </p>
@@ -105,9 +105,9 @@
             <div class="panel-body">
                 <div class="alert alert-info text-center">
                     <b>Survey on detection of atoms of confusion in JavaScript</b><br />
-                    The purpose of the survey is determine if some JS constructs make the code more difficult to read.
+                    The purpose of the survey is determine if some JS constructs make the code more difficult to read and to understand.
                     To measure that,
-                    we ask you to answer a few questions about the output of 10 snippets in JavaScript.
+                    we ask you to answer a few questions about the output of 12 code snippets in JavaScript.
                 </div>
                 <form method="POST" action="/saveUser">
                     {{ csrf_field() }}
