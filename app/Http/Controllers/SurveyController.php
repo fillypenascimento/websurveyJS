@@ -8,6 +8,7 @@ use App\LatinSquare;
 use App\Subject;
 use App\Question;
 use Error;
+use Illuminate\Contracts\Session\Session as SessionSession;
 
 class SurveyController extends Controller
 {
@@ -74,7 +75,10 @@ class SurveyController extends Controller
             error_log($data['subject_time']);
             $subject = Subject::find($request->subject_id);
             $subject->questions()->attach($data['subject_id'], $data);
+            $request->session()->flash('subject_id', $data['subject_id']);
+
             return "success";
+            // return redirect('subjectResults');
         }
         catch(Exception $e){
             error_log('unknown error here');

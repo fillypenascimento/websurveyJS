@@ -11,6 +11,15 @@ class ResultsController extends Controller
         
         return view('results', compact('subjects'));
     }
+
+    function subjectResults(){
+        $subject_id = session('subject_id');
+
+        $subject = Subject::find($subject_id);
+
+        return view('subject-results', compact('subject'));
+    }
+
     public function createCsv(){
         $subjects = Subject::with('questions')->get();
         $fp = fopen('results.csv', 'w');

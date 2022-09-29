@@ -51,8 +51,8 @@
                                         <input value="0" id="has_changed_page" type="hidden" name="has_changed_page" />
                                     </div>
                                     <div class="col-md-12">
-                                        <button id="send-button" class="btn btn-success">Send</button>
                                         <button type="button" id="idk" class="btn btn-info">I do not know</button>
+                                        <button id="send-button" class="btn btn-success">Send</button>
                                     </div>
                                 </div>
                             </form>
@@ -108,7 +108,8 @@
                 {
                     index = index+1;
                     if(index>11)
-                        window.location.replace("/thanks");
+                        window.location.replace("/subjectResults");
+                    
                     $("#subject_answer").val("");
                     $("#current").html(index+1);
                     $("#has_changed_page").val(0);

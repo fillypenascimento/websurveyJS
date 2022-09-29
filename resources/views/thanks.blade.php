@@ -38,7 +38,7 @@
                                         We will contact you via e-mail in case you have been awarded the amazon gift card.
                                     </p> -->
                                     <p>
-                                        You can now close this website
+                                        You can now close this website.
                                     </p>
                                 </div>
                                 

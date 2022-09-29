@@ -13,7 +13,14 @@ class StartController extends Controller
     
     function createUser(Request $data){
         $ref = base64_decode($data->ref);
-        if($ref != 'unb' &&  $ref != 'testing' && $ref != 'unb-ed' && $ref != 'node' && $ref != 'workplace' && $ref != 'reddit' && $ref != 'community'){
+        if($ref != 'unb' &&
+           $ref != 'testing' &&
+           $ref != 'unb-ed' &&
+           $ref != 'node' &&
+           $ref != 'workplace' &&
+           $ref != 'reddit' &&
+           $ref != 'community' &&
+           $ref != 'twitter'){
             error_log($ref);
             error_log($data->ref);
             error_log('controller');
@@ -28,7 +35,7 @@ class StartController extends Controller
             
         ]);
         $data['ip'] = $data->ip();
-        if($data['ref'] == 'reddit' || $data['ref'] == 'community'){
+        if($data['ref'] == 'reddit' || $data['ref'] == 'community' || $data['ref'] == 'twitter'){
             $subjects = Subject::where('ip', $data['ip']);
             if($subjects->count())
                 return view('rejected');

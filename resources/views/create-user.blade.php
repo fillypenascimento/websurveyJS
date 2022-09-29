@@ -113,11 +113,11 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="ref" id="ref" value="{{$ref}}"/>
                     <div class="form-group">
-                        <label for="email">Email address</label>
+                        <label for="email">Email address <small>(optional)</small></label>
                         <input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
                     </div>
                     <div class="form-group">
-                        <label for="experience">Experience level<small> (development/programming - regardless of
+                        <label for="experience">Experience level *<small> (development/programming - regardless of
                                 languages or frameworks)</small></label>
                         <select name="experience" class="form-control">
                             <option value="">Choose experience level</option>
@@ -129,7 +129,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="degree">Education level</label>
+                        <label for="degree">Education level *</label>
                         <select name="degree" class="form-control">
                             <option value="">Select education level</option>
                             <option value="1">High school degree or equivalent</option>
@@ -141,7 +141,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Age</label>
+                        <label>Age *</label>
                         <input type="number" name="age" class="form-control" />
                     </div>
                     <div class="alert alert-danger">
