@@ -102,7 +102,7 @@ class QuestionsTableSeeder extends Seeder
             [
                 'path' => '18.png',
                 'is_atom' => 1,
-                'answer' => 'erro',
+                'answer' => 'P1 [1, 2, 3]',
             ],
             [
                 'path' => '19.png',
